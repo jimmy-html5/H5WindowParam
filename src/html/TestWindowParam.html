@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" style="width: 100%;height: 100%;">
 <head>
     <meta charset="UTF-8">
     <title>iEZ-APP</title>
@@ -10,10 +10,8 @@
             integrity="sha256-Xxq2X+KtazgaGuA2cWR1v3jJsuMJUozyIXDB3e793L8="
             crossorigin="anonymous"></script>
 </head>
-<body style="background:#23A6E9;margin: 0;padding:0;">
-    <div style="width: 200px;height:200px;background: red">
-    </div>
-
+<body style="width:100%;height:100%;background:#F6B1F5;margin: 0;padding:0;display: flex;align-items: center">
+<div style="width: 400px;height:400px;padding:5px;margin:5px;border:2px solid green;background:orange;margin: 0 auto;"/>
 <script>
     // IE11并不支持此属性，取到的值为undefined。
     // ie-edg支持此属性，浏览器全屏测得结果：76（非全屏状态：screenX = screenLeft - 8；screenY=screenTop - 76）
@@ -53,15 +51,16 @@
     console.log("Firefox、Safari浏览器距离屏幕左侧的距离screenXFirefoxSafari：" + screenXFirefoxSafari);
     console.log("=======以上是测试浏览器距离屏幕的位置=============");
     console.log("=============我是路过的分隔符===============");
-    var screenHeight = window.screen.height; // 屏幕高度
+    // win10系统，台式机显示器：1920x1080
+    var screenHeight = window.screen.height; // 屏幕高度（1080）
     console.log("屏幕高度screenHeight：" + screenHeight);
-    var screenWidth = window.screen.width; // 屏幕宽度
+    var screenWidth = window.screen.width; // 屏幕宽度（1920）
     console.log("屏幕宽度screenWidth：" + screenWidth);
-    var screenAvailHeight = window.screen.availHeight; // 屏幕可用高度
+    var screenAvailHeight = window.screen.availHeight; // 屏幕可用高度（1040）
     console.log("屏幕可见高度screenAvailHeight：" + screenAvailHeight);
-    var screenAvailWidth = window.screen.availWidth; // 屏幕可以宽度
+    var screenAvailWidth = window.screen.availWidth; // 屏幕可以宽度（1920）
     console.log("屏幕可见宽度screenAvailWidth：" + screenAvailWidth);
-    var statusBarAvailWidth = window.screen.height - window.screen.availHeight; // 系统的状态栏的高度
+    var statusBarAvailWidth = window.screen.height - window.screen.availHeight; // 系统的状态栏的高度（40）
     console.log("状态栏的宽度statusBarAvailWidth：" + statusBarAvailWidth);
     console.log("===========以上是测试屏幕高宽度=============");
     console.log("=============我是路过的分隔符===============");
@@ -79,38 +78,26 @@
     console.log("浏览器工具栏browserToolbarHeight：" + browserToolbarHeight);
     console.log("====以上是测试浏览器可以呈现页面的高度========");
     console.log("=============我是路过的分隔符===============");
-    var clientWidth = document.body.clientWidth; // 网页可见区域宽(body)
-    console.log("&lt;body&gt;的展示的宽度clientWidth：" + clientWidth);
-    var clientHeight = document.body.clientHeight; // 网页可见区域高(body)
-    console.log("&lt;body&gt;的展示的高度clientHeight：" + clientHeight);
-    var offsetWidth = document.body.offsetWidth; // body的总宽度，包括延伸出去，未显示的宽度，也包括margin和padding
-    console.log("&lt;body&gt;总的宽度offsetWidth：" + offsetWidth);
-    var offsetHeight = document.body.offsetHeight; // body的总高度，包括延伸出去，未显示的宽度，也包括margin和padding
-    console.log("&lt;body&gt;总的宽度offsetHeight：" + offsetHeight);
-    var scrollBarHeight = windowInnerWidth - clientHeight; // body的总高度，包括延伸出去，未显示的宽度，也包括margin和padding
+    var clientWidth = document.body.clientWidth; // 网页可见区域宽(body)（<body>的clientWidth、offsetWidth、scrollWidth相等）
+    console.log("<body>的展示的宽度clientWidth：" + clientWidth);
+    var clientHeight = document.body.clientHeight; // 网页可见区域高(body)（<body>的clientHeight、offsetHeight、scrollHeight相等）
+    console.log("<body>的展示的高度clientHeight：" + clientHeight);
+    var offsetWidth = document.body.offsetWidth; // body的总宽度，包括延伸出去，未显示的宽度，也包括margin和padding（<body>的clientWidth、offsetWidth、scrollWidth相等）
+    console.log("<body>总的宽度offsetWidth：" + offsetWidth);
+    var offsetHeight = document.body.offsetHeight; // body的总高度，包括延伸出去，未显示的宽度，也包括margin和padding（<body>的clientHeight、offsetHeight、scrollHeight相等）
+    console.log("<body>总的宽度offsetHeight：" + offsetHeight);
+    var scrollBarHeight = windowInnerHeight - clientHeight; // body的总高度，包括延伸出去，未显示的宽度，也包括margin和padding
     console.log("滚动条的高度scrollBarHeight：" + scrollBarHeight);
-    console.log("====以上是测试&lt;body&gt;的高度========");
+    console.log("====以上是测试<body>的高度========");
     console.log("=============我是路过的分隔符===============");
-    var scrollWidth = document.body.scrollWidth; // 网页正文全文宽，包括有滚动条时的未见区域
+    var scrollWidth = document.body.scrollWidth; // 网页正文全文宽，包括有滚动条时的未见区域（<body>的clientWidth、offsetWidth、scrollWidth相等）
     console.log("scrollWidth：" + clientWidth);
-    var scrollHeight = document.body.scrollHeight; // 网页正文全文高，包括有滚动条时的未见区域
+    var scrollHeight = document.body.scrollHeight; // 网页正文全文高，包括有滚动条时的未见区域（<body>的clientHeight、offsetHeight、scrollHeight相等）
     console.log("scrollHeight：" + scrollHeight);
     var scrollTop = document.body.scrollTop; // 网页被卷去的Top(滚动条)
     console.log("scrollTop：" + scrollTop);
     var scrollLeft = document.body.scrollLeft; // 网页被卷去的Left(滚动条)
     console.log("scrollLeft：" + scrollLeft);
-    var screenTop = window.screenTop; // 浏览器距离Top
-    console.log("screenTop：" + screenTop);
-    var screenLeft = window.screenLeft; // 浏览器距离Left
-    console.log("screenLeft：" + scrollLeft);
-    var height = window.screen.height; // 屏幕分辨率的高
-    console.log("height：" + height);
-    var width = window.screen.width; // 屏幕分辨率的宽
-    console.log("width：" + width);
-    var availHeight = window.screen.availHeight; // 屏幕可用工作区的高
-    console.log("availHeight：" + availHeight);
-    var availWidth = window.screen.availWidth; // 屏幕可用工作区的宽
-    console.log("availWidth：" + availWidth);
     console.log("========================================");
     console.log("=============我是路过的分隔符=============");
     console.log("========================================");
@@ -128,6 +115,7 @@
     console.log("jQuery=>document=>：" + documentWidth);
     var bodyWidth = $(document.body).width(); // 浏览器当前窗口文档body的宽度
     console.log("jQuery=>body=>width：" + bodyWidth);
+
 </script>
 </body>
 
